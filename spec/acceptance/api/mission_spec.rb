@@ -13,17 +13,18 @@ RSpec.describe "Mission API", type: :request do
       expect(json_body['updated_at']).to be
     end
 
-    it 'expands to return all its deliverables' do
+    it 'expands to return all its deliverables in order' do
       mission = Mission.create!(name: 'Some Mission', description: 'It will make us so much money')
-      del1 = mission.deliverables.create!(name: 'Deliverable 1', description: 'It will make us so much money')
-      del2 = mission.deliverables.create!(name: 'Deliverable 2', description: 'It will make us so much money')
+      del1 = mission.deliverables.create!(name: 'Deliverable 1', description: 'desc 1', ordering: 6)
+      del2 = mission.deliverables.create!(name: 'Deliverable 2', description: 'desc 2', ordering: 3)
 
       get "/api/v1/missions/#{mission.id}"
       expect(response).to be_success
       expect(json_body['deliverables']).to be
       expect(json_body['deliverables'].length).to be(mission.deliverables.count)
-      expect(json_body['deliverables'][0]['name']).to eq(del1.name)
-      expect(json_body['deliverables'][0]['description']).to eq(del1.description)
+      expect(json_body['deliverables'][0]['name']).to eq(del2.name)
+      expect(json_body['deliverables'][0]['description']).to eq(del2.description)
+      expect(json_body['deliverables'][0]['ordering']).to eq(del2.ordering)
       expect(json_body['deliverables'][0]['created_at']).to be
       expect(json_body['deliverables'][0]['updated_at']).to be
     end

@@ -11,6 +11,10 @@
           "type": "string",
           "description": "The description."
         },
+        "ordering": {
+          "type": "integer",
+          "description": "The relative priority of its priority within the mission"
+        },
         "created_at": {
           "type": "string",
           "format": "datetime",

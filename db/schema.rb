@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606195553) do
+ActiveRecord::Schema.define(version: 20150606200724) do
 
   create_table "deliverables", force: :cascade do |t|
     t.string   "name"
@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(version: 20150606195553) do
     t.integer  "mission_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "ordering"
   end
 
   add_index "deliverables", ["mission_id"], name: "index_deliverables_on_mission_id"
+  add_index "deliverables", ["ordering"], name: "index_deliverables_on_ordering"
 
   create_table "missions", force: :cascade do |t|
     t.string   "name"
