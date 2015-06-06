@@ -2,8 +2,8 @@ module Api
   module V1
     class MissionsController < ApplicationController
       def show
-        if mission = Mission.includes(:deliverables).find_by(id: params[:id])
-          render :json => mission.to_json(:include => :deliverables)
+        if mission = Mission.includes({:deliverables => :requirements}).find_by(id: params[:id])
+          render :json => mission.to_json(:include => { :deliverables => { :include => :requirements } })
         else
           head :not_found
         end

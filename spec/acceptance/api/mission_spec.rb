@@ -29,6 +29,22 @@ RSpec.describe "Mission API", type: :request do
       expect(json_body['deliverables'][0]['updated_at']).to be
     end
 
+    it 'expands to return all its deliverables.requirements in order' do
+      mission = Mission.create!(name: 'Some Mission', description: 'It will make us so much money')
+      del1 = mission.deliverables.create!(name: 'Deliverable 1', description: 'desc 1')
+      req1 = del1.requirements.create!(name: 'Requirement 1', description: 'desc 1', ordering: 3)
+      req2 = del1.requirements.create!(name: 'Requirement 2', description: 'desc 1', ordering: 1)
+
+      get "/api/v1/missions/#{mission.id}"
+      expect(response).to be_success
+      expect(json_body['deliverables'][0]['requirements']).to be
+      expect(json_body['deliverables'][0]['requirements'][0]['name']).to eq(req2.name)
+      expect(json_body['deliverables'][0]['requirements'][0]['description']).to eq(req2.description)
+      expect(json_body['deliverables'][0]['requirements'][0]['ordering']).to eq(req2.ordering)
+      expect(json_body['deliverables'][0]['requirements'][0]['created_at']).to be
+      expect(json_body['deliverables'][0]['requirements'][0]['updated_at']).to be
+    end
+
     it 'returns a 404 if no mission could be found' do
       get "/api/v1/missions/1000"
       expect(response).not_to be_success

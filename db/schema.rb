@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606201800) do
+ActiveRecord::Schema.define(version: 20150606202035) do
 
   create_table "deliverables", force: :cascade do |t|
     t.string   "name"
@@ -31,5 +31,17 @@ ActiveRecord::Schema.define(version: 20150606201800) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "requirements", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "deliverable_id"
+    t.integer  "ordering",       default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "requirements", ["deliverable_id"], name: "index_requirements_on_deliverable_id"
+  add_index "requirements", ["ordering"], name: "index_requirements_on_ordering"
 
 end
