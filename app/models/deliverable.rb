@@ -1,6 +1,6 @@
 class Deliverable < ActiveRecord::Base
   belongs_to :mission
-  has_many :requirements, -> { order 'ordering ASC' }
+  has_many :requirements, -> { order 'ordering DESC' }
 
   before_validation :set_defaults
 

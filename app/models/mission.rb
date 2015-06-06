@@ -1,3 +1,3 @@
 class Mission < ActiveRecord::Base
-  has_many :deliverables, -> { order 'ordering ASC' }
+  has_many :deliverables, -> { order 'ordering DESC' }
 end
