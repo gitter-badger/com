@@ -1,0 +1,90 @@
+{
+  "definitions": {
+    "deliverable": {
+      "type": "object"
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The DB id"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "datetime",
+          "description": "When the object was created"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "datetime",
+          "description": "When the object was last updated"
+        }
+        "requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/requirement"
+          }
+        }
+      }
+    },
+    "requirement": {
+      "type": "object"
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The DB id"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "datetime",
+          "description": "When the object was created"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "datetime",
+          "description": "When the object was last updated"
+        }
+      }
+    }
+  },
+
+  "id": "mission",
+  "type": "object",
+  "properties": {
+    "mission": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The DB id"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "datetime",
+          "description": "When the object was created"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "datetime",
+          "description": "When the object was last updated"
+        }
+        "deliverables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/deliverable"
+          }
+        }
+      }
+    }
+  }
+}
