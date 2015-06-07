@@ -1,0 +1,1 @@
+script: "HEADLESS=true bin/rake test"
