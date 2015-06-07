@@ -1,1 +1,5 @@
-script: "HEADLESS=true bin/rake test"
+script: >
+  DATABASE_URL=postgres://localhost/agile_direction_ci
+  HEADLESS=true
+  RACK_ENV=test
+  bin/rake db:create test
