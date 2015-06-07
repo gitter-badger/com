@@ -17,3 +17,6 @@
 /tmp
 /spec/tmp/*
 !/spec/tmp/.keep
+
+.env.development.local
+.env.test.local

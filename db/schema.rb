@@ -13,35 +13,41 @@
 
 ActiveRecord::Schema.define(version: 20150606202035) do
 
-  create_table "deliverables", force: :cascade do |t|
-    t.string   "name"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "deliverables", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.integer  "ordering",    default: 0, null: false
+    t.string   "name",                    null: false
     t.text     "description"
-    t.integer  "mission_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.integer  "ordering",    default: 0, null: false
+    t.uuid     "mission_id"
   end
 
-  add_index "deliverables", ["mission_id"], name: "index_deliverables_on_mission_id"
-  add_index "deliverables", ["ordering"], name: "index_deliverables_on_ordering"
+  add_index "deliverables", ["mission_id"], name: "index_deliverables_on_mission_id", using: :btree
+  add_index "deliverables", ["ordering"], name: "index_deliverables_on_ordering", using: :btree
 
-  create_table "missions", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
+  create_table "missions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "description"
+    t.string   "name",        null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "requirements", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "deliverable_id"
+  create_table "requirements", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "ordering",       default: 0, null: false
+    t.string   "name",                       null: false
+    t.text     "description"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.uuid     "deliverable_id"
   end
 
-  add_index "requirements", ["deliverable_id"], name: "index_requirements_on_deliverable_id"
-  add_index "requirements", ["ordering"], name: "index_requirements_on_ordering"
+  add_index "requirements", ["deliverable_id"], name: "index_requirements_on_deliverable_id", using: :btree
+  add_index "requirements", ["ordering"], name: "index_requirements_on_ordering", using: :btree
 
+  add_foreign_key "deliverables", "missions"
+  add_foreign_key "requirements", "deliverables"
 end
