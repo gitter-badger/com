@@ -1,28 +1,17 @@
-== README
+# Agile Direction API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+```
+git submodule init && git submodule update --recursive
+bin/rake db:create db:migrate db:seed
+bin/rake test
+```
 
-* Ruby version
+## Ways to Run the App
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```
+bin/foreman start # boots UI and API, both in development mode with live reloads
+bin/rackup # boots the API
+bin/rackup full-stack.ru # boots pre-built UI (non-dev) and API (dev)
+```
