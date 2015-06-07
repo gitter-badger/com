@@ -3,6 +3,9 @@
     "deliverable": {
       "type": "object"
       "properties": {
+        "name": {
+          "type": "string"
+        },
         "id": {
           "type": "integer",
           "description": "The DB id"
@@ -67,6 +70,9 @@
         "id": {
           "type": "integer",
           "description": "The DB id"
+        },
+        "name": {
+          "type": "string"
         },
         "description": {
           "type": "string",

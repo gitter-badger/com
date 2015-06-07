@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Mission API", type: :request do
-  describe "SHOW" do
+RSpec.describe("Mission API", { type: :request }) do
+  describe("SHOW") do
     it 'returns a mission with all its attributes' do
       mission = Mission.create!(name: 'Some Mission', description: 'It will make us so much money')
       get "/api/v1/missions/#{mission.id}"
@@ -49,6 +49,26 @@ RSpec.describe "Mission API", type: :request do
       get "/api/v1/missions/1000"
       expect(response).not_to be_success
       expect(response.code).to eq('404')
+    end
+  end
+
+  describe("INDEX") do
+    it("returns missions") do
+      mission = Mission.create!({ name: 'Some Mission', description: 'It will make us so much money' })
+      get("/api/v1/missions")
+      expect(json_body['missions'].first.fetch("id")).to eq(mission.id)
+    end
+
+    it("returns them by when they were created") do
+      first, second = 2.times.collect {
+        Mission.create!({
+          name: 'Some Mission',
+          description: 'It will make us so much money'
+        })
+      }
+      get("/api/v1/missions")
+      expect(json_body['missions'].first.fetch("id")).to eq(second.id)
+      expect(json_body['missions'].second.fetch("id")).to eq(first.id)
     end
   end
 end
