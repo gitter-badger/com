@@ -1,5 +1,10 @@
 # Agile Direction API
 
+## Devendencies
+```
+brew install chromedriver
+```
+
 ## Setup
 
 ```
