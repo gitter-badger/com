@@ -5,6 +5,13 @@ module Builders
   UI_ROOT = "agile-direction-ui/dist".freeze
 
   API = Rack::Builder.new do
+    use Rack::Cors do
+      allow do
+        origins(ENV["UI_HOST"])
+        resource('*', { headers: :any, methods: :get })
+      end
+    end
+
     run(Rails.application)
   end
 

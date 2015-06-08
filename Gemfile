@@ -3,6 +3,7 @@ source("https://rubygems.org")
 
 gem("jbuilder", "~> 2.0")
 gem("pg")
+gem("rack-cors")
 gem("rails", "4.2.1")
 
 group(:production) do
