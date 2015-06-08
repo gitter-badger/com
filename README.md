@@ -19,8 +19,8 @@ bin/rake test
 
 ```
 bin/foreman start --procfile=./Procfile.development # boots UI and API, both in development mode with live reloads
-bin/rackup # boots the API
-bin/rackup full-stack.ru # boots pre-built UI (non-dev) and API (dev)
+RACK_HANDLER=webrick bin/rackup -p 3000 # boots the API
+RACK_HANDLER=webrick bin/rackup full-stack.ru -p 3000 # boots pre-built UI (non-dev) and API (dev)
 ```
 
 ## Deployment
