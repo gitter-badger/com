@@ -8,7 +8,7 @@ module Builders
     use Rack::Cors do
       allow do
         origins(ENV["UI_HOST"])
-        resource('*', { headers: :any, methods: :get })
+        resource("*", { headers: :any, methods: :get })
       end
     end
 

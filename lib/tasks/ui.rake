@@ -7,7 +7,7 @@ namespace(:ui) do
     begin
       FileUtils.cd("agile-direction-ui")
       system("npm install")
-      system("ember build")
+      system("ember build -e integration")
     ensure
       FileUtils.cd(original_dir)
     end
