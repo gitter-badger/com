@@ -1,5 +1,7 @@
 # Agile Direction API
 
+<img title="Build Status Images" src="https://travis-ci.org/agile-direction/agile-direction-api.svg">
+
 ## Dependencies
 
 ```
