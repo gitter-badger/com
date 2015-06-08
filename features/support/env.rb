@@ -21,4 +21,4 @@ else
 end
 Capybara.default_driver = Capybara.javascript_driver = (headless ? :poltergeist : :browser)
 
-CSVImport.import!('db/seeds/test_data.csv')
+CSVImport.import!("db/seeds/test_data.csv")

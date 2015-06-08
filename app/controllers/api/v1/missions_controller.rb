@@ -4,18 +4,27 @@ module Api
       PAGE_LIMIT = 20
 
       def index
-        render({
-          json: {
-            missions: Mission.order({ created_at: :desc }).limit(PAGE_LIMIT)
-          }.to_json
-        })
+        data = {
+          missions: Mission.order({ created_at: :desc }).limit(PAGE_LIMIT)
+        }
+        render({ json: data.to_json })
       end
 
       def show
-        if mission = Mission.includes({:deliverables => :requirements}).find_by(id: params[:id])
-          render :json => mission.to_json(root: true, include: { :deliverables => { :include => :requirements } })
+        mission = Mission.includes({ deliverables: :requirements }).find_by({ id: params[:id] })
+
+        if mission
+          options = {
+            root: true,
+            include: {
+              deliverables: {
+                include: :requirements
+              }
+            }
+          }
+          render({ json: mission.to_json(options) })
         else
-          head :not_found
+          head(:not_found)
         end
       end
     end

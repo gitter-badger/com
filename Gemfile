@@ -1,12 +1,11 @@
 ruby("2.2.2")
 source("https://rubygems.org")
 
-gem("rails", "4.2.1")
-gem("pg")
 gem("jbuilder", "~> 2.0")
+gem("pg")
+gem("rails", "4.2.1")
 
 group(:production) do
-  gem("rails_12factor")
   gem("puma")
 end
 
@@ -21,15 +20,17 @@ end
 group(:development, :test) do
   gem("byebug")
   gem("dotenv")
-  gem("web-console", "~> 2.0")
-  gem("spring")
   gem("rspec-rails", "~> 3.0")
+  gem("spring")
+  gem("web-console", "~> 2.0")
 end
 
 group(:test) do
-  gem("launchy")
-  gem("selenium-webdriver")
+  gem("bundler-audit")
   gem("cucumber-rails", { require: false })
   gem("database_cleaner")
+  gem("launchy")
   gem("poltergeist")
+  gem("rubocop", { require: false })
+  gem("selenium-webdriver")
 end
