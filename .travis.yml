@@ -3,6 +3,10 @@ cache:
   directories:
     - agile-direction-ui/node_modules
     - agile-direction-ui/bower_components
+
+before_install:
+  - "npm config set spin false"
+
 script: >
   DATABASE_URL=postgres://localhost/agile_direction_ci
   HEADLESS=true
