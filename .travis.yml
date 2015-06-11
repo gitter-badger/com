@@ -1,3 +1,8 @@
+cache:
+  bundler: true
+  directories:
+    - agile-direction-ui/node_modules
+    - agile-direction-ui/bower_components
 script: >
   DATABASE_URL=postgres://localhost/agile_direction_ci
   HEADLESS=true
