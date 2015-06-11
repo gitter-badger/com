@@ -5,6 +5,7 @@ AllCops:
     - db/schema.rb
     - agile-direction-ui/**/*
     - spec/**/*.rb
+    - vendor/bundle/**/*
 
 Metrics/LineLength:
   Max: 150
