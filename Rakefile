@@ -18,7 +18,7 @@ if %w(development test).include?(Rails.env)
     system("bundle-audit") || exit
   end
 
-  task({ test: %w(rspec ui:build features rubocop audit_dependencies) })
+  task({ test: %w(rspec features rubocop audit_dependencies) })
 end
 
 Rails.application.load_tasks
