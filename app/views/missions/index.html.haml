@@ -1,0 +1,21 @@
+%h1 Listing missions
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @missions.each do |mission|
+      = mission.name
+
+      %tr
+        %td= link_to 'Show', mission
+        %td= link_to 'Edit', edit_mission_path(mission)
+        %td= link_to 'Destroy', mission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Mission', new_mission_path
