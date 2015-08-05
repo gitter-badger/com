@@ -1,6 +1,8 @@
 ruby("2.2.2")
 source("https://rubygems.org")
 
+gem("haml")
+gem("haml-rails")
 gem("jbuilder", "~> 2.0")
 gem("pg")
 gem("rack-cors")
