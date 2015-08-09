@@ -1,0 +1,10 @@
+%p#notice= notice
+= @deliverable.ordering
+%p
+  = @deliverable.name
+%p
+  = @deliverable.description
+
+= link_to 'Edit', edit_deliverable_path(@deliverable)
+\|
+= link_to 'Back', deliverables_path

@@ -47,5 +47,8 @@ Style/IndentHash:
 Style/ParenthesesAroundCondition:
   Enabled: false
 
+style/BracesAroundHashParameters:
+  Enabled: false
+
 Metrics/AbcSize:
   Max: 20
