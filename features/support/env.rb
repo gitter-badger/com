@@ -1,10 +1,13 @@
+ENV["RACK_ENV"] = ENV["RAILS_ENV"] = "test"
+
 require "capybara/poltergeist"
 require "cucumber/rails"
+require "faker"
 require Rails.root.join("lib/builders")
 
 ActionController::Base.allow_rescue = false
 
-DatabaseCleaner.strategy = :transaction
+DatabaseCleaner.strategy = :truncation
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 Capybara.app = Builders::FULL_STACK

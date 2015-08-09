@@ -27,12 +27,16 @@ group(:development, :test) do
   gem("shotgun")
   gem("spring")
   gem("web-console", "~> 2.0")
+  gem("guard")
+  gem("guard-rails", { require: false })
+  gem("guard-rspec", { require: false })
 end
 
 group(:test) do
   gem("bundler-audit")
   gem("cucumber-rails", { require: false })
   gem("database_cleaner")
+  gem("faker")
   gem("launchy")
   gem("poltergeist")
   gem("rubocop", { require: false })

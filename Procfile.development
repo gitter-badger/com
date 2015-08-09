@@ -1,2 +1,0 @@
-web: bin/rackup -p 3000
-ui: cd agile-direction-ui && ember serve
