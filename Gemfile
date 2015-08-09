@@ -1,6 +1,8 @@
 ruby("2.2.2")
 source("https://rubygems.org")
 
+gem("haml")
+gem("haml-rails")
 gem("jbuilder", "~> 2.0")
 gem("pg")
 gem("rack-cors")
@@ -22,6 +24,7 @@ group(:development, :test) do
   gem("byebug")
   gem("dotenv")
   gem("rspec-rails", "~> 3.0")
+  gem("shotgun")
   gem("spring")
   gem("web-console", "~> 2.0")
 end
