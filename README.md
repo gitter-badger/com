@@ -1,4 +1,4 @@
-# Agile Direction API
+# Keep Delivering
 
 <a href="https://travis-ci.org/agile-direction/agile-direction-api/builds" target="_blank">
   <img title="Build Status Images" src="https://travis-ci.org/agile-direction/agile-direction-api.svg">
