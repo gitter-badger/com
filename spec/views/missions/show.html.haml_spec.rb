@@ -17,4 +17,16 @@ RSpec.describe "missions/show", type: :view do
     expect(rendered).to match(name)
     expect(rendered).to match(description)
   end
+
+  it "renders deliverables" do
+    @mission = assign(:mission, Mission.create!({
+      name: Faker::Name.name
+    }))
+
+    deliverable_name = Faker::Name.name
+    @mission.deliverables.create!({ name: deliverable_name })
+
+    render
+    expect(rendered).to match(deliverable_name)
+  end
 end
