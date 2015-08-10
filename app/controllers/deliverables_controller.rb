@@ -1,16 +1,6 @@
 class DeliverablesController < ApplicationController
   before_action :set_deliverable, { only: [:show, :edit, :update, :destroy] }
-
-  # GET /deliverables
-  # GET /deliverables.json
-  def index
-    @deliverables = Deliverable.order({ ordering: :asc })
-  end
-
-  # GET /deliverables/1
-  # GET /deliverables/1.json
-  def show
-  end
+  before_action :set_mission
 
   # GET /deliverables/new
   def new
@@ -24,11 +14,11 @@ class DeliverablesController < ApplicationController
   # POST /deliverables
   # POST /deliverables.json
   def create
-    @deliverable = Deliverable.new(deliverable_params)
+    @deliverable = @mission.deliverables.new(deliverable_params)
 
     respond_to do |format|
       if @deliverable.save
-        format.html { redirect_to @deliverable, { notice: "Deliverable was successfully created." } }
+        format.html { redirect_to @deliverable.mission, { notice: "Deliverable was successfully created." } }
         format.json { render :show, { status: :created, location: @deliverable } }
       else
         format.html { render :new }
@@ -42,7 +32,7 @@ class DeliverablesController < ApplicationController
   def update
     respond_to do |format|
       if @deliverable.update(deliverable_params)
-        format.html { redirect_to @deliverable, { notice: "Deliverable was successfully updated." } }
+        format.html { redirect_to @deliverable.mission, { notice: "Deliverable was successfully updated." } }
         format.json { render :show, { status: :ok, location: @deliverable } }
       else
         format.html { render :edit }
@@ -56,20 +46,23 @@ class DeliverablesController < ApplicationController
   def destroy
     @deliverable.destroy
     respond_to do |format|
-      format.html { redirect_to deliverables_url, { notice: "Deliverable was successfully destroyed." } }
+      format.html { redirect_to @deliverable.mission, { notice: "Deliverable was successfully destroyed." } }
       format.json { head :no_content }
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_deliverable
     @deliverable = Deliverable.find(params[:id])
   end
 
+  def set_mission
+    @mission = Mission.find(params[:mission_id])
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def deliverable_params
-    params.require(:deliverable).permit(:name, :description, :ordering)
+    params.require(:deliverable).permit(%w(name description ordering))
   end
 end

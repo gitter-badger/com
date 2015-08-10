@@ -5,6 +5,12 @@
 %p
   = @mission.description
 
+%ul
+  - @mission.deliverables.each do |deliverable|
+    %li= deliverable.name
+
 = link_to 'Edit', edit_mission_path(@mission)
 \|
 = link_to 'Back', missions_path
+
+= link_to "add a deliverable", new_mission_deliverable_path(@mission)

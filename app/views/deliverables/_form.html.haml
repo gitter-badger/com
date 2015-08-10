@@ -1,4 +1,5 @@
-= form_for @deliverable do |f|
+- url = @deliverable.new_record? ? mission_deliverables_path(@mission, { action: :create }) : mission_deliverable_path(@mission, @deliverable)
+= form_for(@deliverable, { url: url }) do |f|
   - if @deliverable.errors.any?
     #error_explanation
       %h2= "#{pluralize(@deliverable.errors.count, "error")} prohibited this deliverable from being saved:"
@@ -6,15 +7,11 @@
         - @deliverable.errors.full_messages.each do |msg|
           %li= msg
 
-
   = f.label(:name)
   = f.text_field(:name)
 
   = f.label(:description)
   = f.text_field(:description)
 
-  = f.label(:mission_id)
-  = f.number_field(:ordering)
-
   .actions
-    = f.submit 'Save'
+    = f.submit 'Add'
