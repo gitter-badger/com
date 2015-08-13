@@ -1,3 +1,8 @@
-%h1 Keep Delivering
+#homepage-treatment
+  %h1.logo
+    %span.keep KEEP
+    %span.delivering DELIVERING
 
-= link_to("create a mission", new_mission_path)
+  %p= t("home.index.description")
+
+  = link_to(t("home.index.create_a_mission"), new_mission_path, { class: "action" })

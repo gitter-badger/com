@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+%html{ lang: I18n.locale }
+  %head
+    %title= @title || "Keep Delivering"
+
+    %link{ href: "http://fonts.googleapis.com/css?family=Oswald:400,700", rel: "stylesheet", type: "text/css" }
+    %link{ href: "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300", rel: "stylesheet", type: "text/css" }
+
+    = stylesheet_link_tag("application", { media: "all" })
+
+  %body{ class: "#{controller_name} #{action_name}" }
+    %nav
+      %h1
+        = link_to(root_path, { class: "logo" }) do
+          %span.keep Keep
+          %span.delivering Delivering
+
+
+    = yield

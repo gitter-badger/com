@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get("/", { to: "home#index" })
+  get("/glossary", { to: "home#glossary" })
+  root({ to: "home#index" })
 
   resources(:missions) do
     resources(:deliverables)
