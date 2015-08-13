@@ -1,6 +1,25 @@
 html,
 body {
   min-height: 100%;
+  position: relative;
+}
+
+#background {
+}
+
+#background #shadow {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.0) 10%, rgba(0, 0, 0, 0.0) 40%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+#page {
+  position: relative;
+  z-index: 2;
 }
 
 body {
@@ -78,6 +97,24 @@ label {
   text-align: center;
 }
 
+a {
+  font-style: italic;
+}
+
+nav {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 1em;
+}
+
+nav h1 {
+  margin-bottom: 1px;
+  font-size: 1em;
+}
+
+nav h1 a {
+  font-style: normal;
+}
+
 .home.index nav {
   display: none;
 }
@@ -91,32 +128,14 @@ label {
   border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
 }
 
-input {
-  font-family: 'Open Sans Condensed', sans-serif;
-}
-
-.fill-me-in {
-  background-color: rgba(255, 255, 255, 0.03);
-  padding: 0.2em 1em;
-  margin-bottom: 0.6em;
-  position: relative;
-}
-
-.fill-me-in label {
-  margin-right: 1em;
-  display: inline-block;
-  width: 30%;
-}
-
-.fill-me-in input[type=text] {
-  width: 60%;
-  position: absolute;
-  padding: 0.5em 5%;
-  font-size: 1em;
-  top: -0.2em;
-  bottom: -0.2em;
-  right: -0.2em;
-  background-color: rgba(166, 120, 3, 0.2);
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
+#notice {
+  position: fixed;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.6);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  color: rgba(8, 1, 46, 1);
 }

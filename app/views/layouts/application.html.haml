@@ -9,11 +9,15 @@
     = stylesheet_link_tag("application", { media: "all" })
 
   %body{ class: "#{controller_name} #{action_name}" }
-    %nav
-      %h1
-        = link_to(root_path, { class: "logo" }) do
-          %span.keep Keep
-          %span.delivering Delivering
+    #background
+      #shadow
+
+    #page
+      %nav
+        %h1
+          = link_to(root_path, { class: "logo" }) do
+            %span.keep Keep
+            %span.delivering Delivering
 
 
-    = yield
+      = yield

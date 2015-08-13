@@ -6,9 +6,9 @@ en:
     index:
       description:
         Create to-do lists that allow you to plan out missions
-        of deliverables that can be planned out, prioritized and weighed.
+        of deliverables that can be prioritized and weighed.
         If it's something that you do often, or something another has done before (or better),
-        just clone theirs and make it your own.
+        just clone it and keep moving.
       missions: Missions
       missions_html:
         A %{mission_link} is a large-scale objective.

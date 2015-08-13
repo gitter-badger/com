@@ -9,7 +9,7 @@
 
   .fill-me-in
     = f.label(:name)
-    = f.text_field(:name)
+    = f.text_field(:name, { required: true, autofocus: true })
 
   .fill-me-in
     = f.label(:description)
