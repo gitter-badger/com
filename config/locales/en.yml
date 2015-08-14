@@ -2,17 +2,77 @@ en:
   glossary:
     mission: mission
 
+  missions:
+    new:
+      description:
+        We're talking about major things here.
+        Missions are not things that you can do, they're a theme that guides what you will do.
+        Be the queen of vague here, like "be a better person" because, realistically, this is just a categorization.
+        In terms of James Bond, a Mission would be something like "Skyfall."
+        Also, to be honest, "Skyfall" is a pretty sweet name -- if you've having trouble coming up with one, just use that.
+    show:
+      now-what_html:
+        Awesome, so you're working on '%{mission_name}',
+        what are some things that will add valuable impact in accomplishing that?
+      add-deliverable:
+        Add a deliverable.
+      edit: (edit)
+
+  deliverables:
+    new:
+      title: Add a Deliverable
+      description:
+        What's going to make a difference?
+        More often than not, these will be money-makers and prioritization will be based on how much money each will make.
+        For other types of lists, these will represent something like happiness, and prioritization will be based upon which will make you happier quicker.
+        Going back to that James Bond metaphor of Skyfall, deliverables would look something like this.
+      example_1:
+        title: Be quicker than scorpians
+        value: "Value: I don't die"
+      example_2:
+        title: Get stronger so I can be licensed
+        value: "Value: Do awesome shit"
+      example_3:
+        title: Defeat Javier Bardem
+        value: "Value: Civilization doesn't collapse"
+
   home:
+    glossary:
+      title: Speak
+      mission:
+        name: Missions
+        speak:
+          An accomplishment requiring a plan of attack.
+          Typically, these are themes, ideas or team objectives, in a broader sense.
+          Essentially, Missions are any categorization of work.
+      deliverable:
+        name: Deliverables
+        speak:
+          Anything that provides clear value to a Mission.
+          Deliverables are not tasks that represent work -- these are purely value propositions.
+          If you're planning on going to the moon, deliverables may be something like this.
+        example_1:
+          title: Get a Spacecraft into Orbit
+          value: "Value: We can propel things into space"
+        example_2:
+          title: Spacewalk
+          value: "Value: Demonstrate that people can be in space without dying"
+        example_3:
+          title: Land on the Moon
+          value: "Value: Inspire Michael Jackson to create the Moonwalk"
+
     index:
       description:
-        Create to-do lists that allow you to plan out missions
-        of deliverables that can be prioritized and weighed.
-        If it's something that you do often, or something another has done before (or better),
-        just clone it and keep moving.
-      missions: Missions
+        text_html:
+          Create to-do lists that allow you to plan out %{mission_link}
+          of %{deliverable_link} that can be prioritized and weighed.
+          If it's something that you do often, or something another has done before (or better),
+          just clone it and keep moving.
+        mission_link: missions
+        deliverable_link: deliverables
       missions_html:
         A %{mission_link} is a large-scale objective.
         We're talking about Skyfall-level things here.
       create_a_mission: Start a Mission
       deliverables: Deliverables
-
+      example-title: For an Example...

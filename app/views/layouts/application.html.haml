@@ -10,14 +10,15 @@
 
   %body{ class: "#{controller_name} #{action_name}" }
     #background
+      #vignette
       #shadow
 
     #page
       %nav
         %h1
           = link_to(root_path, { class: "logo" }) do
-            %span.keep Keep
-            %span.delivering Delivering
+            %span.keep K
+            %span.delivering D
 
 
       = yield
