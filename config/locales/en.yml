@@ -1,6 +1,12 @@
 en:
-  glossary:
-    mission: mission
+  icons:
+    arrow_html: "&#8674;"
+
+  head:
+    default_title_html: "%{arrow} Keep Delivering"
+
+  accessibility:
+    skip-to-main-content: Skip to main content
 
   missions:
     new:
@@ -70,9 +76,10 @@ en:
           just clone it and keep moving.
         mission_link: missions
         deliverable_link: deliverables
-      missions_html:
-        A %{mission_link} is a large-scale objective.
-        We're talking about Skyfall-level things here.
-      create_a_mission: Start a Mission
-      deliverables: Deliverables
+      create_a_mission_html: "%{arrow} Start a Mission"
       example-title: For an Example...
+
+  footer:
+    open_source_project: experimental, open source project
+    about_html: This is an %{open_source_link}.
+    copyright_html: Copyright %{year}, %{copyright1984_link}.
