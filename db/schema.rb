@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606202035) do
+ActiveRecord::Schema.define(version: 20150814214447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
   create_table "deliverables", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.integer  "ordering",    default: 0, null: false
-    t.string   "name",                    null: false
-    t.text     "description"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "ordering",   default: 0, null: false
+    t.string   "name",                   null: false
+    t.text     "value"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.uuid     "mission_id"
   end
 

@@ -5,6 +5,7 @@
 
     %link{ href: "http://fonts.googleapis.com/css?family=Oswald:400,700", rel: "stylesheet", type: "text/css" }
     %link{ href: "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300", rel: "stylesheet", type: "text/css" }
+    %link{ href: "http://fonts.googleapis.com/css?family=Special+Elite", rel: "stylesheet", type: "text/css" }
 
     = stylesheet_link_tag("application", { media: "all" })
 
@@ -18,7 +19,10 @@
     #page
       %nav
         %h1
-          = link_to(t("icons.arrow_html"), root_path, { class: "logo" })
+          = link_to(t("icons.arrow_html"), root_path, { class: :logo, title: t("nav.home") })
+
+        %ul
+          %li= link_to(t("nav.browse"), missions_path)
 
       %section#content{ tabindex: -1 }
         = yield

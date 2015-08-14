@@ -116,11 +116,29 @@ label {
 nav {
   border-bottom: 2px solid rgba(255, 255, 255, 0.4);
   margin-bottom: 1em;
+  display: flex;
+  align-items: baseline;
 }
 
 nav h1 {
-  margin-bottom: 1px;
   font-size: 1em;
+  border: none;
+  display: inline;
+  margin: 0;
+  flex-grow: 1;
+}
+
+nav ul {
+  flex-grow: 5;
+  text-align: right;
+  list-style-type: none;
+  display: inline;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  padding-right: 1em;
 }
 
 nav h1 a {
@@ -197,7 +215,29 @@ section {
   margin-bottom: 4em;
 }
 
+#content:focus {
+  outline: none;
+}
+
 footer {
   font-size: 0.6em;
   opacity: 0.6;
+}
+
+.subnote {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+#mission-count {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2em 1em;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.underline {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  margin-bottom: 4px;
 }

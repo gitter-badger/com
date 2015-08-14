@@ -63,6 +63,6 @@ class DeliverablesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def deliverable_params
-    params.require(:deliverable).permit(%w(name description ordering))
+    params.require(:deliverable).permit(%w(name value ordering))
   end
 end

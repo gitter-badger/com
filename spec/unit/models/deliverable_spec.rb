@@ -6,7 +6,7 @@ RSpec.describe(Deliverable, { type: :model }) do
     deliverable = Deliverable.create!({
       mission: mission,
       name: "clean gotham's streets",
-      description: "18 months clean streets, think what you can do with that!"
+      value: "18 months clean streets, think what you can do with that!"
     })
     expect(deliverable.ordering).to eq(0)
   end
