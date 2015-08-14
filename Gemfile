@@ -23,13 +23,14 @@ end
 group(:development, :test) do
   gem("byebug")
   gem("dotenv")
+  gem("guard")
+  gem("guard-rails", { require: false })
+  gem("guard-rspec", { require: false })
+  gem("i18n-tasks")
   gem("rspec-rails", "~> 3.0")
   gem("shotgun")
   gem("spring")
   gem("web-console", "~> 2.0")
-  gem("guard")
-  gem("guard-rails", { require: false })
-  gem("guard-rspec", { require: false })
 end
 
 group(:test) do

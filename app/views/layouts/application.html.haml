@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 %html{ lang: I18n.locale }
   %head
-    %title= @title || "Keep Delivering"
+    %title= @title || t("head.default_title_html", { arrow: t("icons.arrow_html") })
 
     %link{ href: "http://fonts.googleapis.com/css?family=Oswald:400,700", rel: "stylesheet", type: "text/css" }
     %link{ href: "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300", rel: "stylesheet", type: "text/css" }
@@ -9,6 +9,8 @@
     = stylesheet_link_tag("application", { media: "all" })
 
   %body{ class: "#{controller_name} #{action_name}" }
+    = link_to(t("accessibility.skip-to-main-content"), { anchor: :content }, { id: :skip_to_content, class: "hud", tabindex: 1 })
+
     #background
       #vignette
       #shadow
@@ -16,18 +18,16 @@
     #page
       %nav
         %h1
-          = link_to(root_path, { class: "logo" }) do
-            %span.keep K
-            %span.delivering D
+          = link_to(t("icons.arrow_html"), root_path, { class: "logo" })
 
-
-      = yield
+      %section#content{ tabindex: -1 }
+        = yield
 
       %footer
         %p
-          This is an
-          = link_to("open-source + experimental project.", "https://github.com/keep-delivering")
+          - open_source_link = link_to(t("footer.open_source_project"), "https://github.com/keep-delivering")
+          = t("footer.about_html", { open_source_link: open_source_link })
 
         %p
-          = "Copyright #{Time.now.year},"
-          = link_to("copyright1984", "http://copyright1984.com")
+          - copyright1984_link = link_to("copyright1984", "http://copyright1984.com")
+          = t("footer.copyright_html", { year: Time.now.year, copyright1984_link: copyright1984_link })

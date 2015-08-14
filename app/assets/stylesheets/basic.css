@@ -1,3 +1,5 @@
+/* Backgrounds taken from http://lea.verou.me/css3patterns/#argyle */
+
 html,
 body {
   min-height: 100%;
@@ -33,15 +35,13 @@ body {
 
 body {
   padding: 2% 5%;
-  margin: 2% 5%;
-  background-color: rgba(8, 1, 46, 1);
   font-family: 'Open Sans Condensed', sans-serif;
   color: rgba(255, 255, 255, 0.6);
   font-size: 30px;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 2% 5%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
-  /* http://lea.verou.me/css3patterns/#argyle */
+  background-color: rgba(8, 1, 46, 1);
   background-image:
     repeating-linear-gradient(120deg, rgba(255,255,255,.03), rgba(255,255,255,.03) 1px, transparent 1px, transparent 60px),
     repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px);
@@ -57,6 +57,15 @@ h1, h2, h3, h4, h5, h6 {
 a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  transition: 0.2s;
+  font-style: italic;
+}
+
+a:hover,
+a:focus {
+  color: rgba(166, 120, 3, 0.6);
+  color: rgba(166, 120, 3, 1);
 }
 
 a.action,
@@ -82,7 +91,8 @@ input[type=submit] {
   cursor: pointer;
 }
 
-a.action:hover {
+a.action:hover,
+a.action:focus {
   color: rgba(255, 255, 255, 1);
   background-color: rgba(166, 120, 3, 1);
 }
@@ -103,14 +113,6 @@ label {
   cursor: pointer;
 }
 
-.home.index #welcome-treatment {
-  text-align: center;
-}
-
-a {
-  font-style: italic;
-}
-
 nav {
   border-bottom: 2px solid rgba(255, 255, 255, 0.4);
   margin-bottom: 1em;
@@ -123,11 +125,16 @@ nav h1 {
 
 nav h1 a {
   font-style: normal;
+  border: none;
 }
 
-#welcome-treatment .home.index .logo {
+.home.index #welcome-treatment {
+  text-align: center;
+}
+
+.home.index #welcome-treatment .logo {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, .8);
-  font-size: 3em;
+  font-size: 2.4em;
 }
 
 .term {
@@ -144,6 +151,37 @@ nav h1 a {
   left: 0;
   margin: 0;
   color: rgba(8, 1, 46, 1);
+  z-index: 8;
+}
+
+.hud {
+  position: fixed;
+  padding: 2em;
+  margin: 2em;
+  background-color: rgba(0, 0, 0, 0.95);
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  color: rgba(8, 1, 46, 1);
+  box-shadow: 0 0 100px rgba(183, 169, 255, 0.4);
+  text-align: center;
+  z-index: 9;
+
+  background-color: rgba(3, 0, 14, 0.9);
+  background-image:
+    repeating-linear-gradient(120deg, rgba(255,255,255,.03), rgba(255,255,255,.03) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px);
+  background-size: 70px 120px;
+}
+
+#skip_to_content.hud {
+  top: 100%;
+}
+
+#skip_to_content.hud:focus {
+  top: inherit;
+  display: inherit;
 }
 
 .subtext {
@@ -151,6 +189,15 @@ nav h1 a {
   opacity: 0.6;
 }
 
+section {
+  margin-bottom: 2em;
+}
+
+#content {
+  margin-bottom: 4em;
+}
+
 footer {
   font-size: 0.6em;
+  opacity: 0.6;
 }

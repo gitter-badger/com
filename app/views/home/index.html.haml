@@ -1,12 +1,14 @@
-#welcome-treatment
+%section#welcome-treatment
   %h1.logo
     %span.keep KEEP
     %br
     %span.delivering DELIVERING
+
   %p
     - mission_link = link_to(t("home.index.description.mission_link"), glossary_path({ anchor: :mission }))
     - deliverable_link = link_to(t("home.index.description.deliverable_link"), glossary_path({ anchor: :deliverable }))
     = t("home.index.description.text_html", { mission_link: mission_link, deliverable_link: deliverable_link })
-  = link_to(t("home.index.create_a_mission"), new_mission_path, { class: "action" })
+  = link_to(t("home.index.create_a_mission_html", { arrow: t("icons.arrow_html") }), new_mission_path, { class: "action" })
 
-%h2= t("home.index.example-title")
+%section
+  %h2= t("home.index.example-title")
