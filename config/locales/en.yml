@@ -27,6 +27,7 @@ en:
       add-deliverable:
         Add a deliverable.
       edit: (edit)
+      show: (show)
       deliverables: Deliverables
       deliverable_html: "%{name} %{edit_link}"
 
@@ -38,6 +39,23 @@ en:
         Each deliverable should provide meaningful value towards a goal.
         Depending on the type of mission you're on, value could be money, time, happiness or something else.
         If you're planning on going to the moon, deliverables may be something like this.
+    show:
+      now-what_html:
+        Cool! so you're delivering '%{deliverable_name}',
+        what are the requirements to achieve this?
+      add-requirement:
+        Add a requirement.
+      edit: (edit)
+      requirements: Requirements
+      requirement_html: "%{name} %{edit_link}"
+
+  requirements:
+    new:
+      title: Add a Requirement
+      description:
+        what needs to be done?
+        Each reuirement should represent an actionable item.
+
 
   home:
     glossary:

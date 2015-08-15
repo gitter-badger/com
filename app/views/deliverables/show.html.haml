@@ -1,0 +1,23 @@
+- if notice
+  %p#notice= notice
+
+%h2
+  = @deliverable.name
+
+%p
+  = @deliverable.value
+
+= link_to(t("deliverables.show.edit"), edit_mission_deliverable_path(@mission,@deliverable))
+
+- if @deliverable.requirements.any?
+  %h3= t("deliverables.show.requirements")
+  %ul
+    - @deliverable.requirements.each do |requirement|
+      - edit_link = link_to(t("deliverables.show.edit"), edit_mission_deliverable_requirement_path(@mission,@deliverable, requirement))
+      %li
+        = t("deliverables.show.requirement_html", { name: requirement.name, edit_link: edit_link })
+        %span.subnote= requirement.description
+- else
+  %p= t("deliverables.show.now-what_html", { deliverable_name: @deliverable.name })
+
+= link_to(t("deliverables.show.add-requirement"), new_mission_deliverable_requirement_path(@mission,@deliverable))
