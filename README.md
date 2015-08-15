@@ -25,12 +25,19 @@ bin/spring rails server # live reloads, port 9393
 bin/foreman start # performant, port 5000
 ```
 
-## Deployment
+## Remote
+
+### Setup
 
 ```
 open "https://toolbelt.heroku.com/" # get the Heroku toolbelt
 heroku login
 heroku git:remote -a agile-direction-api
+```
+
+### Deploy
+
+```
 git push heroku head:master
 heroku open
 ```
