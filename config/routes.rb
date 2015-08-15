@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root({ to: "home#index" })
 
   resources(:missions) do
-    resources(:deliverables)
+    resources(:deliverables) do
+      resources(:requirements)
+    end
   end
 
   namespace :api do
