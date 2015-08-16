@@ -38,6 +38,5 @@ heroku git:remote -a agile-direction-api
 ### Deploy
 
 ```
-git push heroku head:master
-heroku open
+bin/deploy
 ```
