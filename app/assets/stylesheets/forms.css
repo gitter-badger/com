@@ -28,14 +28,14 @@ input {
   top: -0.2em;
   bottom: -0.2em;
   right: -0.2em;
-  background-color: rgba(166, 120, 3, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
   border: none;
   color: rgba(255, 255, 255, 0.6);
 }
 
 .fill-me-in input:valid {
   color: rgba(255, 255, 255, 1);
-  background-color: rgba(166, 120, 3, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 input[type=submit] {

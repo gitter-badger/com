@@ -4,9 +4,12 @@ source("https://rubygems.org")
 gem("haml")
 gem("haml-rails")
 gem("jbuilder", "~> 2.0")
+gem("jquery-rails")
+gem("jquery-ui-rails")
 gem("pg")
 gem("rack-cors")
 gem("rails", "4.2.1")
+gem("turbolinks")
 
 group(:production) do
   gem("puma")

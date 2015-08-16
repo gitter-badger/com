@@ -1,5 +1,5 @@
 class DeliverablesController < ApplicationController
-  before_action :set_deliverable, { only: [:show, :edit, :update, :destroy] }
+  before_action :set_deliverable, { only: [:show, :edit, :update, :destroy, :order_requirements] }
   before_action :set_mission
 
   # GET /deliverables/new
@@ -48,6 +48,22 @@ class DeliverablesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @deliverable.mission, { notice: "Deliverable was successfully destroyed." } }
       format.json { head :no_content }
+    end
+  end
+
+  # PUT /deliverables/1/order_requirements.json
+  def order_requirements
+    requirement_params = params.permit({ requirements: [:id] })
+    requirements = requirement_params["requirements"].each_with_index.collect do |requirement_param, index|
+      requirement = Requirement.find(requirement_param["id"])
+      requirement.ordering = index
+      requirement.deliverable = @deliverable
+      requirement
+    end
+
+    respond_to do |format|
+      requirements.collect(&:save!)
+      format.json { render json: @deliverable }
     end
   end
 

@@ -29,7 +29,7 @@ class RequirementsController < ApplicationController
 
     respond_to do |format|
       if @requirement.save
-        format.html { redirect_to mission_deliverable_path(id: @deliverable), notice: "Requirement was successfully created." }
+        format.html { redirect_to mission_path(@deliverable.mission), notice: "Requirement was successfully created." }
         format.json { render :show, status: :created, location: @requirement }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class RequirementsController < ApplicationController
   def update
     respond_to do |format|
       if @requirement.update(requirement_params)
-        format.html { redirect_to mission_deliverable_path(id: @deliverable), notice: "Requirement was successfully updated." }
+        format.html { redirect_to mission_path(@deliverable.mission), notice: "Requirement was successfully created." }
         format.json { render :show, status: :ok, location: @requirement }
       else
         format.html { render :edit }

@@ -9,6 +9,14 @@ Then(/^I should see the "(.+)" deliverable on the mission$/) do |deliverable_nam
   expect(page).to have_content(deliverable_name)
 end
 
+When(/^I delete "(.+)"$/) do |deliverable|
+  find(:css, "a[title=\"Delete '#{deliverable}'\"]").click
+end
+
+Then(/^I should not see "(.+)"$/) do |name|
+  expect(page).to_not have_content(name)
+end
+
 And(/^I should be prompted to "(.+)"/) do |prompt|
   expect(page).to have_content(prompt)
 end

@@ -128,4 +128,55 @@ RSpec.describe DeliverablesController, type: :controller do
       expect(response).to redirect_to(mission_path(deliverable.mission))
     end
   end
+
+  describe "PUT order_requirements" do
+    it "updates the order of the requirements" do
+      deliverable = Deliverable.create!(valid_attributes)
+      first_requirement, second_requirement = 2.times.collect do |i|
+        Requirement.create!({
+          deliverable: deliverable,
+          name: Faker::Name.name,
+          ordering: i
+        })
+      end
+
+      @request.env["HTTP_ACCEPT"] = "application/json"
+      @request.env["CONTENT_TYPE"] = "application/json"
+      put(:order_requirements, {
+        mission_id: @mission.id,
+        id: deliverable.id,
+        requirements: [{
+          id: second_requirement.id
+        }, {
+          id: first_requirement.id
+        }]
+      }, valid_session)
+
+      expect(response).to be_successful
+      expect(first_requirement.reload.ordering).to eq(1)
+      expect(second_requirement.reload.ordering).to eq(0)
+    end
+
+    it "will ensure requirement is now part of deliverable" do
+      original_deliverable = Deliverable.create!(valid_attributes)
+      new_deliverable = Deliverable.create!(valid_attributes)
+      requirement = Requirement.create!({
+        deliverable: original_deliverable,
+        name: Faker::Name.name
+      })
+
+      @request.env["HTTP_ACCEPT"] = "application/json"
+      @request.env["CONTENT_TYPE"] = "application/json"
+      put(:order_requirements, {
+        mission_id: @mission.id,
+        id: new_deliverable.id,
+        requirements: [{
+          id: requirement.id
+        }]
+      }, valid_session)
+
+      expect(response).to be_successful
+      expect(requirement.reload.deliverable).to eq(new_deliverable)
+    end
+  end
 end
