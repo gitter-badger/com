@@ -1,0 +1,26 @@
+.swatch {
+  padding: 1em 2em;
+  margin: 0.2em;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.colors {
+  transition: 0.4s;
+}
+
+.colors.action {
+  background-color: rgba(166, 120, 3, 0.6);
+}
+
+.colors.action:hover {
+  background-color: rgba(166, 120, 3, 1);
+}
+
+.colors.work {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.colors.work-completed {
+  background-color: rgba(255, 255, 255, 0.1);
+}

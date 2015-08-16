@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get("/", { to: "home#index" })
   get("/glossary", { to: "home#glossary" })
+  get("/styleguide", { to: "home#styleguide" })
+
   root({ to: "home#index" })
 
   resources(:missions) do

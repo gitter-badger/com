@@ -29,6 +29,7 @@
 
         %ul
           %li= link_to(t("nav.browse"), missions_path)
+          %li= link_to(t("nav.glossary"), glossary_path)
 
       %section#content{ tabindex: -1 }
         = yield
@@ -36,7 +37,8 @@
       %footer
         %p
           - open_source_link = link_to(t("footer.open_source_project"), "https://github.com/keep-delivering")
-          = t("footer.about_html", { open_source_link: open_source_link })
+          - style_link = link_to(t("footer.styleguide"), styleguide_path)
+          = t("footer.about_html", { styleguide_link: style_link, open_source_link: open_source_link })
 
         %p
           - copyright1984_link = link_to("copyright1984", "http://copyright1984.com")
