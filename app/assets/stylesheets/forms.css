@@ -20,7 +20,7 @@ input {
   width: 30%;
 }
 
-.fill-me-in input[type=text] {
+.fill-me-in input[type=text],input[type=number] {
   width: 60%;
   position: absolute;
   padding: 0.5em 5%;

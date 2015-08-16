@@ -138,4 +138,22 @@ RSpec.describe RequirementsController, type: :controller do
     end
   end
 
+  describe "Put #start" do
+    it "starts the requested requirement" do
+      requirement = Requirement.create! valid_attributes
+      expect(requirement.status).to eq("created")
+      put :start,{mission_id: @mission.id, deliverable_id: @deliverable.id,:id => requirement.to_param}, valid_session
+      expect(requirement.reload.status).to eq("started")
+    end
+  end
+
+  describe "Put #finish" do
+    it "completes the requested requirement" do
+      requirement = Requirement.create! valid_attributes.merge!( status: "started")
+      expect(requirement.status).to eq("started")
+      put :finish,{mission_id: @mission.id, deliverable_id: @deliverable.id,:id => requirement.to_param}, valid_session
+      expect(requirement.reload.status).to eq("completed")
+    end
+  end
+
 end

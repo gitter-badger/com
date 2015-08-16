@@ -1,5 +1,5 @@
 class RequirementsController < ApplicationController
-  before_action :set_requirement, only: [:show, :edit, :update, :destroy]
+  before_action :set_requirement, only: [:show, :edit, :update, :destroy, :start, :finish]
   before_action :set_deliverable
 
   # GET /requirements
@@ -62,6 +62,24 @@ class RequirementsController < ApplicationController
     end
   end
 
+  def start
+    respond_to do |format|
+      if @requirement.start!
+        format.html { redirect_to mission_path(@deliverable.mission), notice: "Requirement was successfully started." }
+        format.json { render :show, status: :created, location: @requirement }
+      end
+    end
+  end
+
+  def finish
+    respond_to do |format|
+      if @requirement.finish!
+        format.html { redirect_to mission_path(@deliverable.mission), notice: "Requirement was successfully completed." }
+        format.json { render :show, status: :created, location: @requirement }
+      end
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -75,6 +93,6 @@ class RequirementsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def requirement_params
-    params.require(:requirement).permit(%w(name description ordering))
+    params.require(:requirement).permit(%w(name description ordering estimate))
   end
 end

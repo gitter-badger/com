@@ -1,6 +1,7 @@
 ruby("2.2.2")
 source("https://rubygems.org")
 
+gem("aasm")
 gem("haml")
 gem("haml-rails")
 gem("jbuilder", "~> 2.0")
