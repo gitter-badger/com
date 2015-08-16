@@ -6,4 +6,4 @@ Feature: Info
 
   Scenario: I should be able to do create missions
     When I goto the homepage
-    Then I should see a link to Start a Mission
+    Then I should see a link to "Begin a Mission"

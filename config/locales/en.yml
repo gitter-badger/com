@@ -1,10 +1,16 @@
 en:
   icons:
-    arrow_html: "&#8674;"
+    arrow_html: "&#x029BE;"
+    handle_html: "&vellip;"
 
   nav:
     home: Home
     browse: Browse
+
+  actions:
+    delete: Delete
+    edit: Edit
+    save: Save
 
   head:
     default_title_html: "%{arrow} Keep Delivering"
@@ -15,21 +21,17 @@ en:
   missions:
     new:
       description:
-        We're talking about major things here.
         Missions are not things that you can do, they're a theme that guides what you will do.
-        Be the queen of vague here, like "be a better person" because, realistically, this is just a categorization.
         In terms of James Bond, a Mission would be something like "Skyfall."
         Also, to be honest, "Skyfall" is a pretty sweet name -- if you've having trouble coming up with one, just use that.
     show:
       now-what_html:
         Awesome, so you're working on '%{mission_name}',
         what are some things that will add valuable impact in accomplishing that?
-      add-deliverable:
-        Add a deliverable.
-      edit: (edit)
-      show: (show)
-      deliverables: Deliverables
-      deliverable_html: "%{name} %{edit_link}"
+      add-deliverable_html: "%{arrow} add deliverable"
+      add-deliverable: Add Deliverable
+      add-requirement_html: "%{arrow} add requirement"
+      deliverable_html: "%{name}"
 
   deliverables:
     new:
@@ -39,6 +41,8 @@ en:
         Each deliverable should provide meaningful value towards a goal.
         Depending on the type of mission you're on, value could be money, time, happiness or something else.
         If you're planning on going to the moon, deliverables may be something like this.
+    edit:
+      title: "Editing '%{name}'"
     show:
       now-what_html:
         Cool! so you're delivering '%{deliverable_name}',
@@ -85,13 +89,12 @@ en:
     index:
       description:
         text_html:
-          Create to-do lists that allow you to plan out %{mission_link}
-          of %{deliverable_link} that can be prioritized and weighed.
+          Create %{mission_link} plans of %{deliverable_link}.
           If it's something that you do often, or something another has done before (or better),
           just clone it and keep moving.
-        mission_link: missions
+        mission_link: mission
         deliverable_link: deliverables
-      create_a_mission_html: "%{arrow} Start a Mission"
+      create_a_mission_html: "%{arrow} Begin a Mission"
       active-missions_html: "%{count}&nbsp;&nbsp;Active Missions"
 
   footer:

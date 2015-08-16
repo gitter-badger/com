@@ -6,7 +6,8 @@ body {
   position: relative;
 }
 
-#background {
+.right {
+  float: right;
 }
 
 #background #vignette {
@@ -37,20 +38,26 @@ body {
   padding: 2% 5%;
   font-family: 'Open Sans Condensed', sans-serif;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 30px;
+  font-size: 24px;
   margin: 2% 5%;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  line-height: 1.8em;
 
   background-color: rgba(8, 1, 46, 1);
   background-image:
     repeating-linear-gradient(120deg, rgba(255,255,255,.03), rgba(255,255,255,.03) 1px, transparent 1px, transparent 60px),
     repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px);
   background-size: 70px 120px;
+  transition: 1s;
+}
+
+body.loading {
+  background-color: rgba(37, 1, 1, 1);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Oswald', sans-serif;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding-bottom: 0.5em;
 }
 
@@ -59,13 +66,34 @@ a {
   text-decoration: none;
   border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
   transition: 0.2s;
-  font-style: italic;
+}
+
+a:focus {
+  outline-color: rgba(166, 120, 3, 0.6);
 }
 
 a:hover,
 a:focus {
-  color: rgba(166, 120, 3, 0.6);
   color: rgba(166, 120, 3, 1);
+}
+
+#page a {
+  display: inline-block;
+  margin: 0 0.2em 0 0;
+}
+
+#page a:hover,
+#page a:focus {
+  margin: 0 0 0 0.2em;
+}
+
+#page p a {
+  margin: 0;
+}
+
+#page p a:hover,
+#page p a:focus {
+  margin: 0;
 }
 
 a.action,
@@ -89,12 +117,22 @@ input[type=submit] {
   font-family: 'Open Sans Condensed', sans-serif;
   transition: 0s;
   cursor: pointer;
+  width: 100%;
 }
 
 a.action:hover,
 a.action:focus {
   color: rgba(255, 255, 255, 1);
   background-color: rgba(166, 120, 3, 1);
+}
+
+a.action.delete {
+  background-color: rgba(51, 0, 0, 0.4);
+}
+
+a.action.delete:hover,
+a.action.delete:focus {
+  background-color: rgba(51, 0, 0, 1);
 }
 
 .logo {
@@ -114,10 +152,14 @@ label {
 }
 
 nav {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   margin-bottom: 1em;
   display: flex;
   align-items: baseline;
+}
+
+nav a {
+  border: none;
 }
 
 nav h1 {
@@ -152,7 +194,8 @@ nav h1 a {
 
 .home.index #welcome-treatment .logo {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, .8);
-  font-size: 2.4em;
+  font-size: 3em;
+  line-height: 1.4em;
 }
 
 .term {
@@ -208,7 +251,18 @@ nav h1 a {
 }
 
 section {
-  margin-bottom: 2em;
+  margin-bottom: 4em;
+}
+
+.contrast {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1em;
+}
+
+#mission-count {
+  text-align: center;
+  padding: 2em 1em;
 }
 
 #content {
@@ -220,8 +274,8 @@ section {
 }
 
 footer {
-  font-size: 0.6em;
-  opacity: 0.6;
+  font-size: 0.8em;
+  opacity: 0.8;
 }
 
 .subnote {
@@ -230,14 +284,37 @@ footer {
   opacity: 0.8;
 }
 
-#mission-count {
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 2em 1em;
-  border: 1px dashed rgba(255, 255, 255, 0.2);
-}
 
 .underline {
   border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
   margin-bottom: 4px;
 }
+
+.deliverable_handle,
+.requirement_handle {
+  opacity: 0.4;
+  cursor: move;
+}
+
+ul#deliverables.active li ul {
+  zoom: 0.4;
+}
+
+ul.requirements {
+  min-height: 1em;
+}
+
+ul.requirements {
+  font-size: 0.8em;
+}
+
+ul {
+  margin-bottom: 1em;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+}
+

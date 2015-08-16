@@ -66,7 +66,7 @@ RSpec.describe RequirementsController, type: :controller do
 
       it "redirects to deliverable" do
         post :create, {mission_id: @mission.id, deliverable_id: @deliverable.id, :requirement => valid_attributes}, valid_session
-        expect(response).to redirect_to(mission_deliverable_path(@mission,@deliverable))
+        expect(response).to redirect_to(mission_path(@mission))
       end
     end
 
@@ -104,7 +104,7 @@ RSpec.describe RequirementsController, type: :controller do
       it "redirects to the deliverable" do
         requirement = Requirement.create! valid_attributes
         put :update, {mission_id: @mission.id, deliverable_id: @deliverable.id, id: requirement.to_param, :requirement => valid_attributes}, valid_session
-        expect(response).to redirect_to(mission_deliverable_path(@mission, @deliverable))
+        expect(response).to redirect_to(mission_path(@mission))
       end
     end
 

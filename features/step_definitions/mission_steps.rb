@@ -25,7 +25,7 @@ When(/^I update a mission/) do
 end
 
 When(/^I have missions/) do
-  @missions = rand(1..rand(3)).times.collect do
+  @missions = rand(1..rand(1..3)).times.collect do
     mission = new_mission
     mission.save!
     mission

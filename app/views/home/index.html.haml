@@ -10,6 +10,6 @@
     = t("home.index.description.text_html", { mission_link: mission_link, deliverable_link: deliverable_link })
   = link_to(t("home.index.create_a_mission_html", { arrow: t("icons.arrow_html") }), new_mission_path, { class: "action" })
 
-%section#mission-count
+%section#mission-count.contrast
   = link_to(missions_path) do
     %h2= t("home.index.active-missions_html", { count: Mission.count })
