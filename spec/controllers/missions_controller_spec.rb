@@ -132,4 +132,31 @@ RSpec.describe MissionsController, type: :controller do
     end
   end
 
+  describe "PUT #order" do
+    it "reorders deliverables" do
+      mission = Mission.create!(valid_attributes)
+      first_deliverable, second_deliverable = 2.times.collect do |i|
+        Deliverable.create!({
+          mission: mission,
+          name: Faker::Name.name,
+          ordering: i
+        })
+      end
+
+      @request.env["HTTP_ACCEPT"] = "application/json"
+      @request.env["CONTENT_TYPE"] = "application/json"
+      put(:order_deliverables, {
+        id: mission.id,
+        deliverables: [{
+          id: second_deliverable.id
+        }, {
+          id: first_deliverable.id
+        }]
+      }, valid_session)
+
+      expect(response).to be_successful
+      expect(first_deliverable.reload.ordering).to eq(1)
+      expect(second_deliverable.reload.ordering).to eq(0)
+    end
+  end
 end

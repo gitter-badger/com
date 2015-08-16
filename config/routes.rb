@@ -4,7 +4,15 @@ Rails.application.routes.draw do
   root({ to: "home#index" })
 
   resources(:missions) do
+    member do
+      put("order_deliverables")
+    end
+
     resources(:deliverables) do
+      member do
+        put("order_requirements")
+      end
+
       resources(:requirements)
     end
   end

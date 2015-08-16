@@ -63,6 +63,21 @@ class MissionsController < ApplicationController
     end
   end
 
+  # PUT /missions/1/order_deliverables.json
+  def order_deliverables
+    deliverable_params = params.permit({ deliverables: [:id] })
+    deliverables = deliverable_params["deliverables"].each_with_index.collect do |deliverable_param, index|
+      deliverable = Deliverable.find(deliverable_param["id"])
+      deliverable.ordering = index
+      deliverable
+    end
+
+    respond_to do |format|
+      deliverables.collect(&:save!)
+      format.json { render json: @mission }
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

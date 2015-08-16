@@ -15,5 +15,8 @@
     = f.label(:value)
     = f.text_field(:value)
 
-  .actions
-    = f.submit 'Add'
+  = f.submit(t("actions.save"), { class: "action" })
+
+  - unless @deliverable.new_record?
+    %h3 Danger Zone
+    = link_to(t("actions.delete"), mission_deliverable_path(@deliverable.mission, @deliverable), { class: "action delete", method: :delete })

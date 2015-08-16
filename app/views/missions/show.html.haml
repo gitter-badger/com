@@ -1,23 +1,32 @@
 - if notice
   %p#notice= notice
 
-%h2
-  = @mission.name
+%section
+  .right= link_to(t("actions.edit"), edit_mission_path(@mission))
 
-%p
-  = @mission.description
+  %h2
+    = @mission.name
 
-= link_to(t("missions.show.edit"), edit_mission_path(@mission))
 
-- if @mission.deliverables.any?
-  %h3= t("missions.show.deliverables")
-  %ul
-    - @mission.deliverables.each do |deliverable|
-      - edit_link = link_to(t("missions.show.show"), mission_deliverable_path(@mission, deliverable))
-      %li
-        = t("missions.show.deliverable_html", { name: deliverable.name, edit_link: edit_link })
-        %span.subnote= deliverable.value
-- else
-  %p= t("missions.show.now-what_html", { mission_name: @mission.name })
+  %p
+    = @mission.description
 
-= link_to(t("missions.show.add-deliverable"), new_mission_deliverable_path(@mission))
+  - if @mission.deliverables.any?
+    %ul#deliverables{ "data-id" => @mission.id }
+      - @mission.deliverables.reverse_order.each do |deliverable|
+        %li{ "data-id" => deliverable.id }
+          %span.deliverable_handle= t("icons.handle_html")
+          = link_to(t("missions.show.deliverable_html", { name: deliverable.name }), edit_mission_deliverable_path(@mission, deliverable))
+          %span.subnote= deliverable.value
+          %ul.requirements{ "data-id" => deliverable.id }
+            - deliverable.requirements.reverse_order.each do |requirement|
+              %li.requirement{ "data-id" => requirement.id }
+                %span.requirement_handle= t("icons.handle_html")
+                = link_to(requirement.name, edit_mission_deliverable_requirement_path(@mission, deliverable, requirement))
+            = link_to(new_mission_deliverable_requirement_path(@mission, deliverable)) do
+              = t("missions.show.add-requirement_html", { arrow: t("icons.arrow_html") })
+  - else
+    %p= t("missions.show.now-what_html", { mission_name: @mission.name })
+
+  = link_to(new_mission_deliverable_path(@mission), { title: t("missions.show.add-deliverable") }) do
+    = t("missions.show.add-deliverable_html", { arrow: t("icons.arrow_html") })
