@@ -31,6 +31,7 @@ en:
       add-deliverable_html: "%{arrow} add deliverable"
       add-deliverable: Add Deliverable
       add-requirement_html: "%{arrow} add requirement"
+      add-requirement: Add Requirement
       deliverable_html: "%{name}"
 
   deliverables:

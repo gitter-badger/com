@@ -7,7 +7,6 @@
   %h2
     = @mission.name
 
-
   %p
     = @mission.description
 
@@ -23,7 +22,7 @@
               %li.requirement{ "data-id" => requirement.id }
                 %span.requirement_handle= t("icons.handle_html")
                 = link_to(requirement.name, edit_mission_deliverable_requirement_path(@mission, deliverable, requirement))
-            = link_to(new_mission_deliverable_requirement_path(@mission, deliverable)) do
+            = link_to(new_mission_deliverable_requirement_path(@mission, deliverable), { title: t("missions.show.add-requirement") }) do
               = t("missions.show.add-requirement_html", { arrow: t("icons.arrow_html") })
   - else
     %p= t("missions.show.now-what_html", { mission_name: @mission.name })
