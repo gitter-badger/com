@@ -26,7 +26,7 @@
   var updateOrderOfRequirements = function(deliverableUl) {
     var missionUl = $(deliverableUl).parent().parent();
 
-    var requirements = Array.prototype.reduce.call(deliverableUl.children, function(previousValue, currentValue) {
+    var requirements = Array.prototype.reduce.call($(deliverableUl).find('li'), function(previousValue, currentValue) {
       return previousValue.concat({ id: $(currentValue).data('id') });
     }, []);
     if (requirements.length == 0) return;
