@@ -1,10 +1,10 @@
 en:
   icons:
     arrow_html: "&#x029BE;"
+    class_icon_html: ""
     handle_html: "&vellip;"
 
   nav:
-    home: Home
     browse: Browse
 
   actions:
@@ -32,7 +32,7 @@ en:
       add-deliverable: Add Deliverable
       add-requirement_html: "%{arrow} add requirement"
       add-requirement: Add Requirement
-      deliverable_html: "%{name}"
+      deliverable_html: "%{name} - %{estimate} days"
 
   deliverables:
     new:
@@ -52,7 +52,7 @@ en:
         Add a requirement.
       edit: (edit)
       requirements: Requirements
-      requirement_html: "%{name} %{edit_link}"
+      requirement_html: "%{name} - %{estimate} days"
 
   requirements:
     new:
@@ -95,10 +95,16 @@ en:
           just clone it and keep moving.
         mission_link: mission
         deliverable_link: deliverables
-      create_a_mission_html: "%{arrow} Begin a Mission"
+      create_a_mission_html: "Begin a Mission"
       active-missions_html: "%{count}&nbsp;&nbsp;Active Missions"
 
   footer:
     open_source_project: experimental, open source project
     about_html: This is an %{open_source_link}.
     copyright_html: Copyright %{year}, %{copyright1984_link}.
+
+
+  activerecord:
+    attributes:
+      requirement:
+        estimate: "Estimate in days"

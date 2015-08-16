@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814214447) do
+ActiveRecord::Schema.define(version: 20150816005537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20150814214447) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.uuid     "deliverable_id"
+    t.integer  "estimate",       default: 0
+    t.integer  "status",         default: 0
   end
 
   add_index "requirements", ["deliverable_id"], name: "index_requirements_on_deliverable_id", using: :btree

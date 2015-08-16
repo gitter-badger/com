@@ -13,7 +13,12 @@ Rails.application.routes.draw do
         put("order_requirements")
       end
 
-      resources(:requirements)
+      resources(:requirements) do
+        member do
+          put :start
+          put :finish
+        end
+      end
     end
   end
 
