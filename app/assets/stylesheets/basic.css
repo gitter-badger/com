@@ -274,6 +274,7 @@ section {
 }
 
 footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 0.8em;
   opacity: 0.8;
 }
@@ -312,10 +313,22 @@ ul {
   margin-bottom: 1em;
 }
 
+.home.styleguide #swatches {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.home.styleguide #swatches .swatch {
+  flex-grow: 1;
+}
+
 @media screen and (max-width: 600px) {
   body {
     font-size: 16px;
   }
 }
 
-i.large {font-size: 1em;}
+i.large {
+  font-size: 1em;
+}

@@ -6,6 +6,7 @@ en:
 
   nav:
     browse: Browse
+    glossary: Glossary
 
   actions:
     delete: Delete
@@ -58,13 +59,25 @@ en:
     new:
       title: Add a Requirement
       description:
-        what needs to be done?
-        Each reuirement should represent an actionable item.
-
+        What needs to be done?
+        Each requirement should represent an actionable item.
 
   home:
+    styleguide:
+      title: Styleguide
+      swatches: Swatches
+      swatch:
+        action: Actions
+        work: Work
+        work-completed: Work (Completed)
+
     glossary:
-      title: Speak
+      requirement:
+        title: Requirement
+        description:
+          Actionable tasks required to accomplish deliverable.
+
+      title: Glossary
       mission:
         name: Missions
         speak:
@@ -100,7 +113,10 @@ en:
 
   footer:
     open_source_project: experimental, open source project
-    about_html: This is an %{open_source_link}.
+    styleguide: styleguide
+    about_html:
+      This is an %{open_source_link}.
+      Also, here's the %{styleguide_link}.
     copyright_html: Copyright %{year}, %{copyright1984_link}.
 
 
