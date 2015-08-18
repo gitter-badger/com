@@ -75,6 +75,7 @@ a:focus {
 a:hover,
 a:focus {
   color: rgba(166, 120, 3, 1);
+  text-decoration: none;
 }
 
 #page a {
