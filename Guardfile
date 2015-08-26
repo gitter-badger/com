@@ -7,7 +7,7 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: "bundle exec rspec" do
+guard(:rspec, { cmd: "bundle exec rspec" }) do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
@@ -18,6 +18,10 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(rspec.spec_helper) { rspec.spec_dir }
   watch(rspec.spec_support) { rspec.spec_dir }
   watch(rspec.spec_files)
+
+  watch(%r{app/models/(.+).rb}) do |file|
+    File.join(rspec.spec_dir, "unit", "models", "#{file[1]}_spec.rb")
+  end
 
   # Ruby files
   ruby = dsl.ruby

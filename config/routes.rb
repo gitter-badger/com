@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get("/", { to: "home#index" })
+  resources(:users)
+
   get("/glossary", { to: "home#glossary" })
   get("/styleguide", { to: "home#styleguide" })
-
-  root({ to: "home#index" })
 
   resources(:missions) do
     member do
@@ -29,4 +28,11 @@ Rails.application.routes.draw do
       resources :missions
     end
   end
+
+  get("/auth", { to: "omniauth#authenticate" })
+
+  get("/auth/twitter/callback", { to: "omniauth#callback" })
+  get("/auth/twitter/failure", { to: "omniauth#failure" })
+
+  root({ to: "home#index" })
 end

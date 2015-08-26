@@ -119,6 +119,12 @@ en:
       Also, here's the %{styleguide_link}.
     copyright_html: Copyright %{year}, %{copyright1984_link}.
 
+  omniauth:
+    failure:
+      title: Did Not See that Coming...
+      try-again: try again?
+      message_html: Sorry, we can't log you in, would you like to %{link}
+
 
   activerecord:
     attributes:
