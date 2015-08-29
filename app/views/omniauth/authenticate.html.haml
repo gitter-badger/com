@@ -1,0 +1,5 @@
+%h1= t("omniauth.authenticate.title")
+
+- image = image_tag("third-party/TwitterLogo_white.png", { id: "twitter-icon" })
+- twitter_link_text = t("omniauth.authenticate.login-with-twitter-link_html", { image: image })
+= link_to(twitter_link_text, "/auth/twitter")

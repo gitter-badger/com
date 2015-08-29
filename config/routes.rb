@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   get("/auth", { to: "omniauth#authenticate" })
+  put("/logout", { to: "omniauth#logout" })
 
   get("/auth/twitter/callback", { to: "omniauth#callback" })
   get("/auth/twitter/failure", { to: "omniauth#failure" })

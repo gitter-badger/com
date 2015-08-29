@@ -29,7 +29,11 @@
 
         %ul
           %li= link_to(t("nav.browse"), missions_path)
-          %li= link_to(t("nav.glossary"), glossary_path)
+          - if current_user
+            %li= link_to(t("nav.my-account"), user_path(current_user))
+            %li= link_to(t("nav.log-out"), logout_path, { method: :put })
+          - else
+            %li= link_to(t("nav.authenticate"), auth_path)
 
       %section#content{ tabindex: -1 }
         = yield

@@ -7,17 +7,33 @@ RSpec.describe(OmniauthController, { type: :controller }) do
 
   let(:twitter_user) { User.find_by({ source_id: @uid }) }
 
+  def set_auth_environment!(data)
+    request.env["omniauth.auth"] = Remote::OAuth.twitter_response(data)
+  end
+
   describe "GET #auth" do
-    it "redirects to /auth/twitter/callback" do
+    it "renders page" do
       get(:authenticate)
-      expect(response).to redirect_to("/auth/twitter/callback")
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe "PUT #logout" do
+    it "logs user out" do
+      user = User.create!({ name: Faker::Name.name })
+      controller.current_user = user
+      put(:logout)
+      expect(controller.current_user).to eq(nil)
+      expect(response).to redirect_to(root_path)
     end
   end
 
   describe "GET #callback" do
     it "creates user for twitter account" do
+      set_auth_environment!({ uid: @uid })
+
       expect() {
-        post(:callback, Remote::OAuth.twitter_response({ uid: @uid }))
+        post(:callback)
       }.to change() {
         User.count
       }.by(1)
@@ -26,27 +42,38 @@ RSpec.describe(OmniauthController, { type: :controller }) do
     end
 
     it "sets current user" do
-      post(:callback, Remote::OAuth.twitter_response({ uid: @uid }))
+      set_auth_environment!({ uid: @uid })
+      post(:callback)
       expect(controller.current_user).to eq(twitter_user)
     end
 
     it "redirects to users' page" do
-      post(:callback, Remote::OAuth.twitter_response({ uid: @uid }))
+      set_auth_environment!({ uid: @uid })
+      post(:callback)
       expect(response).to redirect_to(user_path(controller.current_user))
     end
 
     it "upserts user for twitter account" do
+      set_auth_environment!({ uid: @uid })
+
       expect() {
-        post(:callback, Remote::OAuth.twitter_response({ uid: @uid }))
-        post(:callback, Remote::OAuth.twitter_response({ uid: @uid }))
+        post(:callback)
+        post(:callback)
       }.to change() {
         User.count
       }.by(1)
     end
 
     it "displays fail screen if uid is not present in auth" do
+      expect(Rails.logger).to receive(:error) do |error_arguments|
+        expect(error_arguments[:error]).to match(/id/)
+        expect(error_arguments[:userParams]).to include({ uid: nil })
+      end
+
+      set_auth_environment!({ uid: nil })
+
       expect() {
-        post(:callback, Remote::OAuth.twitter_response({ uid: nil }))
+        post(:callback)
       }.to change() {
         User.count
       }.by(1)

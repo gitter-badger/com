@@ -1,10 +1,10 @@
 class OmniauthController < ApplicationController
-  rescue_from(Assemblers::InvalidData) do
+  rescue_from(Assemblers::InvalidData) do |error|
+    Rails.logger.error({ error: error.to_s, userParams: user_params })
     redirect_to(auth_twitter_failure_path)
   end
 
   def authenticate
-    redirect_to(auth_twitter_callback_path)
   end
 
   def callback
@@ -16,9 +16,14 @@ class OmniauthController < ApplicationController
     render({ status: 400 })
   end
 
+  def logout
+    log_out!
+    redirect_to(root_path)
+  end
+
   private
 
   def user_params
-    params.permit(:uid, { info: [:name, :location, :image] })
+    request.env["omniauth.auth"].to_hash
   end
 end
