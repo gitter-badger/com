@@ -1,0 +1,37 @@
+{
+  "id": "oauth.twitter",
+  "type": "object",
+  "required": [
+    "uid",
+    "info"
+  ],
+  "properties": {
+    "uid": {
+      "type": "string"
+    },
+    "info": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "nickname": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string",
+          "format": "uri"
+        },
+        "location": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

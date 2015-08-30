@@ -1,0 +1,3 @@
+%h1= t("omniauth.failure.title")
+- link = link_to(t("omniauth.failure.try-again"), auth_path)
+%p= t("omniauth.failure.message_html", { link: link })

@@ -1,3 +1,7 @@
+Dir[File.join(__dir__, "helpers", "*")].each do |file|
+  require file
+end
+
 RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

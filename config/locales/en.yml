@@ -6,7 +6,9 @@ en:
 
   nav:
     browse: Browse
-    glossary: Glossary
+    authenticate: Auth
+    log-out: Log Out
+    my-account: My Account
 
   actions:
     delete: Delete
@@ -18,6 +20,10 @@ en:
 
   accessibility:
     skip-to-main-content: Skip to main content
+
+  errors:
+    unauthorized:
+      title: You're Not Allowed to See This
 
   missions:
     new:
@@ -118,6 +124,16 @@ en:
       This is an %{open_source_link}.
       Also, here's the %{styleguide_link}.
     copyright_html: Copyright %{year}, %{copyright1984_link}.
+
+  omniauth:
+    authenticate:
+      title: Authenticate
+      login-with-twitter-link_html: "%{image} Login with Twitter"
+
+    failure:
+      title: Did Not See that Coming...
+      try-again: try again?
+      message_html: Sorry, we can't log you in, would you like to %{link}
 
 
   activerecord:
